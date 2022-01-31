@@ -1,0 +1,28 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "create-high-res",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "type": "blob",
+      "direction": "in",
+      "name": "inputImg",
+      "path": "{collection}/{img}.jpg",
+      "connection": "TransformStorage",
+      "dataType": "binary"
+    },
+    {
+      "type": "blob",
+      "direction": "out",
+      "name": "outputImg",
+      "path": "hd{collection}forprint/{img}.jpg",
+      "connection": "AzureWebJobsStorage",
+      "dataType": "binary"
+    }
+  ]
+}
